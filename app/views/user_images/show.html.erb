@@ -1,0 +1,55 @@
+<div class="user_content">
+
+  <p>
+    <strong>Filename:</strong>
+    <%= @user_image.filename %>
+  </p>
+  
+  <p>
+    <strong>Content type:</strong>
+    <%= @user_image.content_type %>
+  </p>
+  
+
+  <table>
+    <tr>
+      <td>
+        <strong>Data:</strong>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="rounded_image">
+          <%= image_tag(display_image_path(@user_image.id), height:'200px', width: '200px') %>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <br>
+  
+  <p>
+    <strong>User:</strong>
+    <%= link_to "#{@user_image.user.identity}", @user_image.user %>
+  </p>
+  
+  <p>
+    <strong>Created At:</strong>
+    <%= @user_image.created_at.strftime("%A, %b. %d %Y %I:%M %p") %>
+  </p>
+  
+  <%= link_to download_image_path(id: @user_image.id) do %>
+    <i class="fa fa-cloud-download" aria-hidden="true"></i> Download 
+  <% end %>
+  <br>
+  
+  <%= link_to @user_image, method: :delete, data: { confirm: BASICConsts::DELETE_MSG } do %>
+    <i class="fa fa-times text-danger" aria-hidden="true"></i> Remove 
+  <% end %>
+  
+  <br><br>
+  
+  <%= link_to user_path(id: @user_image.user_id) do %>
+    <i class="fa fa-reply" aria-hidden="true"></i> Back  
+  <% end %>
+
+</div>

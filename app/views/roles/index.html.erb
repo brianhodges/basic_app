@@ -1,0 +1,38 @@
+<body ng-app="BasicApp">
+  <div ng-controller="RolesController" ng-init="index()">  
+    <h1>Listing Roles</h1>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Role</th>
+          <th>User Count</th>
+          <% if admin_user? %><th colspan="2"></th><% end %>
+        </tr>
+      </thead>
+      <tbody ng-repeat="role in roles">
+          <tr data-href="{{role.id}}">
+            <td>{{role.role}}</td>
+            <td align="center">{{role.num_of_users}}</td>
+            <% if admin_user? %>
+              <td>
+                <a href="/roles/{{role.id}}/edit">
+                  <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>
+                </a>
+              </td>
+              <td>
+                <a data-confirm="<%= BASICConsts::DELETE_MSG %>" rel="nofollow" data-method="delete" href="/roles/{{role.id}}">
+                  <i class="fa fa-trash fa-lg" aria-hidden="true"></i>
+                </a>
+              </td>
+            <% end %>
+          </tr>
+      </tbody>
+    </table>
+    
+    <br>
+    <%= link_to new_role_path do %>
+      <i class="fa fa-plus-square" aria-hidden="true"></i> New Role
+    <% end %>
+  </div>
+</body>

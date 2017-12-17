@@ -1,0 +1,26 @@
+<h1>Set Profile Picture</h1>
+
+<table>
+  <% @user.user_images.each do |i| %>
+  <tr>
+    <td>
+      <input id="profile_image_id" name="profile_image_id" class="profile_image_checkboxes" type="radio" <% if @user.profile_image_id == i.id %> checked="checked" <% end %> value="<%= i.id %>" name="profile_image_id">
+    </td>
+    <td style="padding:0 15px 0 15px;">
+      <div class="rounded_image">
+        <%= image_tag(display_image_path(i.id), height:'100px', width: '100px') %>
+      </div>
+    </td>
+  </tr>
+  <% end %>
+</table>
+
+<div style="float: right;">
+  <button class="btn btn-primary" id="save_profile_id">Update</button>
+</div>
+
+<br>
+
+<%= link_to user_path(id: session[:user_id]) do %>
+  <i class="fa fa-reply" aria-hidden="true"></i> Back  
+<% end %>

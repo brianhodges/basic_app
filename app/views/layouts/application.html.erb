@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Basic App</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <%= render 'layouts/partials/session_buttons' %>
+  </head>
+  <body>
+  
+    <% flash.each do |name, msg| %>
+      <strong><%= content_tag :div, msg, :id => "flash#{name}" %></strong><br>
+    <% end %>
+  
+    <div class="main_content_div">
+      <%= yield %>
+    </div>
+    
+    <%= render 'layouts/partials/welcome_modal' %>
+    <%= render 'layouts/partials/signup_info_modal' %>
+    <%= render 'layouts/partials/user_welcome_modal' %>
+    <%= render 'layouts/partials/roles_welcome_modal' %>
+    
+  </body>
+  <footer>
+    <%= BasicApp::Application.config.version %>
+  </footer>
+</html>

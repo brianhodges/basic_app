@@ -1,0 +1,195 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require bootstrap
+ *= require font-awesome
+ *= require_tree .
+ *= require_self
+ */
+
+.field {
+    
+}
+
+* {
+    font-family: 'Oswald', sans-serif; 
+}
+
+h1 {
+    padding-top: 6px;
+    margin-bottom: 5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+    letter-spacing: .04em;
+}
+
+h2 {
+    font-size: 24px;
+    padding-top: 6px;
+    margin-bottom: 5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+    letter-spacing: .04em;
+}
+
+h3 {
+    
+}
+
+a:hover {
+    text-decoration: none;
+    color: #286090;
+    background-color: inherit;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#flashnotice, #flashalert {
+
+}
+
+head {
+    position:fixed;
+    top:0px;
+}
+
+footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    font-weight: bold;
+    color: white;
+}
+
+body {
+    background-image: url(rva_living_room_view.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* background-position: center center; */
+}
+
+.main_content_div {
+    background-color: white;
+    opacity: 0.9;
+    width:500px;
+    max-height: 500px;
+    margin:0 auto;
+    position:fixed;
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50% / 10%; 
+    padding-top: 50px;
+    padding-right: 20px;
+    padding-bottom: 50px;
+    padding-left: 20px;
+    word-wrap: break-word;
+}
+
+.button {
+    -webkit-appearance: none;
+    background: transparent;
+    border-color: currentcolor;
+    border-style: solid;
+    border-width: 1px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font: inherit;
+    font-weight: bold;
+    line-height: normal;
+    margin: 0;
+    padding: .4em .75em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    white-space: normal;
+    border-radius: 5px;
+}
+
+.button:hover, .button:focus, .button:active {
+    text-decoration: none;
+    background: #fff;
+    color: #e0245e;
+}
+
+.user_content {
+    max-height:400px;
+    overflow-y:scroll;
+}
+
+tr[data-href] {
+    cursor: pointer;
+}
+
+tr[data-href]:hover {
+    background-color: #D3D3D3;
+}
+
+#loading_icon {
+    display: none;
+}
+
+.img_circle {
+    border-radius: 50%;
+    height: 125px;
+    width: 125px;
+}
+
+#complete_modal {
+    left: 60%;
+    right: auto;
+    /* padding-left: 500px; */
+}
+
+#user_home_icon:hover {
+    color: white;
+    cursor: pointer;
+    font-size: 32px;
+}
+
+#user_arrow_icon {
+    
+}
+
+.talkbubble {
+    width: 250px;
+    height: 120px;
+    padding: 0px;
+    background: #FFFFFF;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.talkbubble:after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 15px 0 15px 15px;
+    border-color: transparent #FFFFFF;
+    display: block;
+    width: 0;
+    z-index: 1;
+    left: 248px;
+    top: 20px;
+}
+
+.rounded_image {
+    border-radius: 15px;
+    position: static;
+    overflow: hidden;
+}

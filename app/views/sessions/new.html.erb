@@ -1,0 +1,15 @@
+<%= form_tag sessions_path do %>
+  <h1>Log In</h1>
+  
+  <div class="form-group">
+    <%= text_field_tag :email, params[:email], :size=>"30", :placeholder => "Username", class: 'form-control' %>
+  </div>
+  
+  <div class="form-group">
+    <%= password_field_tag :password, '', :size=>"30", :placeholder => "Password", class: 'form-control' %>
+  </div>
+  
+  <%= render 'layouts/partials/custom_submit_button', label: 'Login' %>
+<% end %>
+
+

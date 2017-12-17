@@ -1,0 +1,31 @@
+<input type="hidden" id="role_id" value="<%= @role.id %>">
+
+<p>
+  <strong>Role:</strong>
+  <%= @role.role %>
+</p>
+
+<p>
+  <strong>User Count:</strong>
+  <%= @role.users.size %>
+</p>
+
+<p>
+  <strong>Created At:</strong>
+  <%= @role.created_at.strftime("%A, %b. %d %Y %I:%M %p") %>
+</p>
+
+<p>
+  <strong>Updated At:</strong>
+  <%= @role.updated_at.strftime("%A, %b. %d %Y %I:%M %p") %>
+</p>
+
+<% if admin_user? %>
+  <%= link_to edit_role_path(@role) do %>
+    <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit  
+  <% end %>
+  |
+<% end %>
+<%= link_to roles_path do %>
+  <i class="fa fa-reply" aria-hidden="true"></i> Back
+<% end %>

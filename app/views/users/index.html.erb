@@ -1,0 +1,44 @@
+<h1>Listing Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Email</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Role</th>
+      <% if admin_user? %><th colspan="2"></th><% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr data-href="<%= user.id %>">
+      <td><%= user.id %></td>
+      <td><%= user.email %></td>
+      <td><%= user.first_name.capitalize %></td>
+      <td><%= user.last_name.capitalize %></td>
+      <td><%= user.role.role %></td>
+      <% if admin_user? %>
+        <td>
+          <%= link_to edit_user_path(user) do %>
+            <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>  
+          <% end %>
+        </td>
+        <td>
+          <%= link_to user, method: :delete, data: { confirm: BASICConsts::DELETE_MSG } do %>
+            <i class="fa fa-trash fa-lg" aria-hidden="true"></i>  
+          <% end %>
+        </td>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>  
+</table>
+
+<% if admin_user? %>
+  <br>
+  <%= link_to new_user_path do %>
+    <i class="fa fa-plus-square" aria-hidden="true"></i> New User
+  <% end %>
+<% end %>

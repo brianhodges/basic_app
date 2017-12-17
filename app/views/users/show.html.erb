@@ -1,0 +1,81 @@
+<div class="user_content">
+  <% if @user.profile_image_id %>
+    <% user_image = UserImage.find_by_id(@user.profile_image_id) %>
+    <% if user_image %>
+      <center><img src="<%= display_image_path(user_image.id) %>" class="img_circle" /></center>
+    <% end %>
+  <% end %>
+  
+  <p>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </p>
+  
+  <p>
+    <strong>First Name:</strong>
+    <%= @user.first_name.capitalize %>
+  </p>
+  
+  <p>
+    <strong>Last Name:</strong>
+    <%= @user.last_name.capitalize %>
+  </p>
+  
+  <% if admin_user? %>
+  <p>
+    <strong>Password hash:</strong>
+    <%= @user.password_hash %>
+  </p>
+  
+  <p>
+    <strong>Password salt:</strong>
+    <%= @user.password_salt %>
+  </p>
+  <% end %>
+  
+  <p>
+    <strong>Role:</strong>
+    <%= @user.role.role %><br>
+    <%= link_to roles_path, :'data-ajax' => false do %>
+      <i style="margin-left:1em;" class="fa fa-users" aria-hidden="true"></i> Add Roles
+    <% end %>
+  </p>
+  
+  <br>
+  
+  <% if admin_user? %>
+    <%= link_to new_user_image_path(id: @user.id) do %>
+      <i class="fa fa-plus-square" aria-hidden="true"></i> Upload Image
+    <% end %>
+  <% else %>
+    <%= link_to new_user_image_path do %>
+      <i class="fa fa-plus-square" aria-hidden="true"></i> Upload Image  
+    <% end %>
+  <% end %>
+  &nbsp;
+  
+  <%= link_to edit_user_path(@user) do %>
+    <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit User  
+  <% end %>&nbsp;
+  
+  <% if @user.user_images.present? %>
+    <%= link_to update_profile_image_path do %>
+      <i class="fa fa-share-square-o" aria-hidden="true"></i> Set Profile Picture
+    <% end %>
+  <% end %>
+  
+  <br><br>
+  
+  <% if @user.user_images.present? %>
+    <h2>My Images</h2>
+    <% @user.user_images.each do |i| %>
+      <%= link_to i do %>
+        <i class="fa fa-file-image-o" aria-hidden="true"></i> <%= i.filename %>
+      <% end %>
+      <%= link_to i, method: :delete, data: { confirm: BASICConsts::DELETE_MSG } do %>
+        <i class="fa fa-times text-danger" aria-hidden="true"></i>
+      <% end %>
+      <br>
+    <% end %>
+  <% end %>
+</div>

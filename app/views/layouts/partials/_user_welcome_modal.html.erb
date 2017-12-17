@@ -1,0 +1,28 @@
+<% if @user %>
+  <!-- Modal -->
+  <div class="modal fade" id="user_welcome_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <i id="user_arrow_icon" style="display: none; float: left; padding-top: 35px; padding-left: 7.5px; color:red;" class="fa fa-arrow-up fa-2x" aria-hidden="true"></i>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Welcome <%= @user.identity %></h4>
+        </div>
+        <div class="modal-body">
+          <p>
+            Now that you are in. You can freely navigate between pages.<br>
+            You can add roles. You can add images and set one as a profile picture. You can even view a list of users.<br><br>
+            In order to do any data manipulation that would alter the app signicantly, you would have to have your role set as Admin.
+            Note the user icon in the top left will always navigate you back here.<br><br><br>
+          </p>
+          <p style="font-style: italic;">
+            Images are stored safely in the database by being converted to base64 binary data. Normally for performance, I'd prefer to store
+            them in an AWS S3 Bucket. But I feel this is a better demonstration of a wider array of programming knowledge.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" onclick="$('#user_arrow_icon').hide();" data-dismiss="modal">OK</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+<% end %>

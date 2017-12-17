@@ -1,0 +1,11 @@
+<div class="user_content">
+  <h1>Sign Up</h1>
+  <%= render 'form' %>
+  
+  <% if admin_user? %>
+    <%= link_to users_path do %>
+      <i class="fa fa-users" aria-hidden="true"></i> Users  
+    <% end %>
+  <% end %>
+  
+</div>

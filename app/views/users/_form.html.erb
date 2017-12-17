@@ -1,0 +1,61 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :email %><br />
+    <%= f.text_field :email, :size => '35', class: 'form-control' %>
+  </div>
+    <div class="form-group">
+    <%= f.label :first_name, 'First Name' %><br />
+    <%= f.text_field :first_name, :size => '35', class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :last_name, 'Last Name' %><br />
+    <%= f.text_field :last_name, :size => '35', class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, :size => '35', class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, :size => '35', class: 'form-control' %>
+  </div>
+
+
+  <% if admin_user? %>
+    <div class="field">
+      <%= f.label :role_id, 'Role' %><br />
+      <% if @user.id %>
+        <%= f.collection_select :role_id, Role.order(:role), :id, :role, :selected => @user.role_id %>
+      <% else %>
+        <%= f.collection_select :role_id, Role.order(:role), :id, :role %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="field" style="display: none;">
+      <%= f.label :role_id, 'Role' %><br />
+      <% if @user.id %>
+        <%= f.collection_select :role_id, Role.order(:role), :id, :role, :selected => @user.role_id %>
+      <% else %>
+        <%= f.collection_select :role_id, Role.order(:role), :id, :role, :selected => user_role.id %>
+      <% end %>
+    </div>
+  <% end %>
+  
+  <% if @user.id %>
+    <%= render 'layouts/partials/custom_submit_button', label: 'Update' %>
+  <% else %>
+    <%= render 'layouts/partials/custom_submit_button', label: 'Sign Up' %>
+  <% end %>
+<% end %>

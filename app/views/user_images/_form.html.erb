@@ -1,0 +1,21 @@
+<%= form_for(@user_image) do |f| %>
+  <% if @user_image.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user_image.errors.count, "error") %> prohibited this user_image from being saved:</h2>
+
+      <ul>
+      <% @user_image.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <%= f.hidden_field :user_id, :value => @user.id %>
+  <%= f.file_field :user_image %>
+  
+  <br><br>
+  
+  <%= render 'layouts/partials/custom_submit_button', label: 'Upload' %>
+<% end %>

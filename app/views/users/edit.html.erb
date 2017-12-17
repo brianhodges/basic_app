@@ -1,0 +1,27 @@
+<div class="user_content">
+  <h1>Editing User</h1>
+
+  <%= form_for @user do |f| %>
+    <% if @user.errors.any? %>
+      <div class="error_messages">
+        <h2>Form is invalid</h2>
+        <ul>
+          <% for message in @user.errors.full_messages %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <%= render 'form' %>
+    
+    <%= link_to @user do %>
+      <i class="fa fa-window-maximize" aria-hidden="true"></i> Show  
+    <% end %>
+    <% if admin_user? %> |
+      <%= link_to users_path do %>
+        <i class="fa fa-reply" aria-hidden="true"></i> Back  
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
